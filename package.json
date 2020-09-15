@@ -1,0 +1,14 @@
+{
+  "name": "yamaha-musiccast-mqtt",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "bin": {
+    "musiccast-mqtt": "./index.js"
+  },
+  "dependencies": {
+    "mqtt": "^4.2.1",
+    "yamaha-yxc-nodejs": "^0.0.11",
+    "yargs": "^16.0.3"
+  }
+}
