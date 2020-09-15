@@ -26,10 +26,15 @@ const yamaha = new YamahaYXC(argv.host);
 const client = mqtt.connect(argv.mqttUrl);
 
 const executeCommand = (message) => {
-  console.log("message", message);
-  const { command, args } = JSON.parse(message);
-  const method = yamaha[command];
-  Reflect.apply(method, yamaha, args);
+  try {
+    const { command, args } = JSON.parse(message);
+    console.log("Received command", command, "with args", args);
+    const method = yamaha[command];
+    Reflect.apply(method, yamaha, args);
+  } catch {
+    console.warn("Unable to parse command", message);
+    return;
+  }
 };
 
 const fetchStatus = async () => {
